@@ -1,6 +1,8 @@
 import speech_recognition as sr
 import os
 import sys
+import string
+import re
 from google.cloud import translate_v2 as translate
 from google.cloud import texttospeech
 from google.cloud import texttospeech_v1
@@ -38,15 +40,21 @@ output = translate_client.translate(
     target_language="en"
 )
 
+output['translatedText'] = re.sub(r'[^A-Za-z ]+', '', output['translatedText'])
+
+print("Google Cloud thinks they said", output)
+
+print("They said ( in", lang[output['detectedSourceLanguage']], ") ->",  output['translatedText'])
+
+fullVoiceOutput = "They said " + output['translatedText'] + "... You should say: " #INSERT RESPONSE HERE
+##CALCULATE RESPONSE AND ADD IT TO FULL VOICE OUTPUT
+
 #tts API
-synthesis_input = texttospeech_v1.SynthesisInput(text=text)
+synthesis_input = texttospeech_v1.SynthesisInput(text=fullVoiceOutput)
 voice = texttospeech_v1.VoiceSelectionParams(
     language_code='en',
     ssml_gender=texttospeech_v1.SsmlVoiceGender.MALE
 )
-
-
-print("Google Cloud thinks you said", output)
 
 response1 = tts_client.synthesize_speech(
     input = synthesis_input,
