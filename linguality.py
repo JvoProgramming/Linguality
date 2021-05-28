@@ -1,4 +1,5 @@
 import speech_recognition as sr
+from playsound import playsound
 import os
 import sys
 import string
@@ -8,7 +9,6 @@ from google.cloud import texttospeech_v1
 from supportedLanguages import lang
 
 sys.tracebacklimit = 0
-
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"C:\Users\Zenpa\OneDrive\Documents\Class Assignments\CS173\Final Project\Linguality\credentials.json"
 
 #translate API
@@ -23,43 +23,92 @@ audio_config = texttospeech_v1.AudioConfig(
 #voice input library and API
 r = sr.Recognizer()
 
-with sr.Microphone() as source:
-    print('Waiting for their response: ')
-    audio = r.listen(source)
+#function to generate voice output
+def generate_reply(sentence, accent):
+    synthesis_input = texttospeech_v1.SynthesisInput(text=sentence)
+    voice = texttospeech_v1.VoiceSelectionParams(
+        language_code=accent,
+        ssml_gender=texttospeech_v1.SsmlVoiceGender.MALE
+    )
 
-try:
-    text = r.recognize_google_cloud(audio)
-except sr.UnknownValueError:
-    print("Linguality did not understand what you said")
-except sr.RequestError as e:
-    print("Could not request results from Google Cloud Speech service; {0}".format(e))
+    response1 = tts_client.synthesize_speech(
+        input = synthesis_input,
+        voice = voice,
+        audio_config = audio_config
+    )
+    with open('reply.mp3', 'wb') as output1:
+        output1.write(response1.audio_content)
 
-output = translate_client.translate(
-    text,
-    target_language="en"
-)
+    playsound('reply.mp3')
+    os.remove('reply.mp3')
 
-output['translatedText'] = re.sub(r'[^A-Za-z ]+', '', output['translatedText'])
+spokenLanguage = ""
+userTurn = True
 
-#print("Google Cloud thinks they said", output)
+while True:
+    userTurn = not userTurn
+    with sr.Microphone() as source:
+        if userTurn == True:
+            print('Waiting you to finish saying the response...')
+            audio = r.listen(source)
+            continue
+        print('Waiting for their response...')
+        audio = r.listen(source)
 
-print("They said ( in", lang[output['detectedSourceLanguage']], ") ->",  output['translatedText'])
+    try:
+        text = r.recognize_google_cloud(audio)
+        output = translate_client.translate(
+            text,
+            target_language="en"
+        )
 
-fullVoiceOutput = "They said " + output['translatedText'] + "... You should say: " #INSERT RESPONSE HERE
-##CALCULATE RESPONSE AND ADD IT TO FULL VOICE OUTPUT
+        output['translatedText'] = re.sub(r'[^A-Za-z ]+', '', output['translatedText'])
 
-#tts API
-synthesis_input = texttospeech_v1.SynthesisInput(text=fullVoiceOutput)
-voice = texttospeech_v1.VoiceSelectionParams(
-    language_code='en',
-    ssml_gender=texttospeech_v1.SsmlVoiceGender.MALE
-)
+        #print("Google Cloud thinks they said", output)
 
-response1 = tts_client.synthesize_speech(
-    input = synthesis_input,
-    voice = voice,
-    audio_config = audio_config
-)
+        print("They said ( in", lang[output['detectedSourceLanguage']], ") ->",  output['translatedText'])
+        spokenLanguage = output['detectedSourceLanguage']
 
-with open('audio file1.mp3', 'wb') as output1:
-    output1.write(response1.audio_content)
+        fullVoiceOutput = "They said " + output['translatedText'] + "... You should reply with: " #INSERT RESPONSE HERE
+        ##CALCULATE RESPONSE AND ADD IT TO FULL VOICE OUTPUT
+
+        #tts API
+        synthesis_input = texttospeech_v1.SynthesisInput(text=fullVoiceOutput)
+        voice = texttospeech_v1.VoiceSelectionParams(
+            language_code='en',
+            ssml_gender=texttospeech_v1.SsmlVoiceGender.MALE
+        )
+
+        response1 = tts_client.synthesize_speech(
+            input = synthesis_input,
+            voice = voice,
+            audio_config = audio_config
+        )
+
+        with open('reply.mp3', 'wb') as output1:
+            output1.write(response1.audio_content)
+
+        playsound('reply.mp3')
+        os.remove('reply.mp3')
+    except sr.UnknownValueError:
+        print("Linguality did not understand what they said")
+        if spokenLanguage == "":
+            print("You should reply with: huh?")
+            message = "I did not understand them. You should reply with..."
+            generate_reply(message, 'en')
+            generate_reply('huh', 'en')
+
+        else:
+            text = "what?"
+            output = translate_client.translate(
+            text,
+            target_language=spokenLanguage
+            )
+            message = "I did not understand them. You should reply with: "
+            print("You should reply with:", output['translatedText'])
+            #change language
+            generate_reply(message, 'en')
+            generate_reply(output['translatedText'], spokenLanguage)
+    except sr.RequestError as e:
+        print("Could not request results from Google Cloud Speech service; {0}".format(e))
+
