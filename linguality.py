@@ -1,28 +1,58 @@
 import speech_recognition as sr
-from langdetect import detect
+import os
+import sys
+from google.cloud import translate_v2 as translate
+from google.cloud import texttospeech
+from google.cloud import texttospeech_v1
+from supportedLanguages import lang
 
+sys.tracebacklimit = 0
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"C:\Users\Zenpa\OneDrive\Documents\Class Assignments\CS173\Final Project\Linguality\credentials.json"
+
+#translate API
+translate_client = translate.Client()
+
+#tts API
+tts_client = texttospeech_v1.TextToSpeechClient()
+audio_config = texttospeech_v1.AudioConfig(
+    audio_encoding=texttospeech_v1.AudioEncoding.MP3
+)
+
+#voice input library and API
 r = sr.Recognizer()
 
 with sr.Microphone() as source:
     print('Say something: ')
     audio = r.listen(source)
 
-text = r.recognize_google(audio)
-language = detect(text)
+try:
+    text = r.recognize_google_cloud(audio)
+except sr.UnknownValueError:
+    print("Linguality did not understand what you said")
+except sr.RequestError as e:
+    print("Could not request results from Google Cloud Speech service; {0}".format(e))
 
-#SUPPORTED LANGUAGES
-if language == 'en':
-    language += '-US'
-elif language == 'es':
-    language += '-ES'
-elif language == 'ja':
-    language += '-JP'
-elif language += 'hi':
-    language += '-IN'
-elif language += 'it':
-    language += '-IT'
-elif language += 'vi':
-    language += '-VN'
+output = translate_client.translate(
+    text,
+    target_language="en"
+)
 
-print(r.recognize_google(audio))
-print(language)
+#tts API
+synthesis_input = texttospeech_v1.SynthesisInput(text=text)
+voice = texttospeech_v1.VoiceSelectionParams(
+    language_code='en',
+    ssml_gender=texttospeech_v1.SsmlVoiceGender.MALE
+)
+
+
+print("Google Cloud thinks you said", output)
+
+response1 = tts_client.synthesize_speech(
+    input = synthesis_input,
+    voice = voice,
+    audio_config = audio_config
+)
+
+with open('audio file1.mp3', 'wb') as output1:
+    output1.write(response1.audio_content)
