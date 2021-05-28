@@ -4,7 +4,6 @@ import sys
 import string
 import re
 from google.cloud import translate_v2 as translate
-from google.cloud import texttospeech
 from google.cloud import texttospeech_v1
 from supportedLanguages import lang
 
@@ -25,7 +24,7 @@ audio_config = texttospeech_v1.AudioConfig(
 r = sr.Recognizer()
 
 with sr.Microphone() as source:
-    print('Say something: ')
+    print('Waiting for their response: ')
     audio = r.listen(source)
 
 try:
@@ -42,7 +41,7 @@ output = translate_client.translate(
 
 output['translatedText'] = re.sub(r'[^A-Za-z ]+', '', output['translatedText'])
 
-print("Google Cloud thinks they said", output)
+#print("Google Cloud thinks they said", output)
 
 print("They said ( in", lang[output['detectedSourceLanguage']], ") ->",  output['translatedText'])
 
