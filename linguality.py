@@ -4,6 +4,7 @@ import os
 import sys
 import string
 import re
+import chatbot
 from google.cloud import translate_v2 as translate
 from google.cloud import texttospeech_v1
 from supportedLanguages import lang
@@ -42,6 +43,8 @@ def generate_reply(sentence, accent):
     playsound('reply.mp3')
     os.remove('reply.mp3')
 
+
+print('------------------------ LINGUALITY ------------------------')
 spokenLanguage = ""
 userTurn = True
 
@@ -70,8 +73,9 @@ while True:
         print("They said ( in", lang[output['detectedSourceLanguage']], ") ->",  output['translatedText'])
         spokenLanguage = output['detectedSourceLanguage']
 
-        fullVoiceOutput = "They said " + output['translatedText'] + "... You should reply with: " #INSERT RESPONSE HERE
         ##CALCULATE RESPONSE AND ADD IT TO FULL VOICE OUTPUT
+        
+        fullVoiceOutput = "They said " + output['translatedText'] + "... You should reply with: " #INSERT RESPONSE HERE
 
         #tts API
         synthesis_input = texttospeech_v1.SynthesisInput(text=fullVoiceOutput)

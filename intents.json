@@ -1,0 +1,30 @@
+{"intents": [
+    {"tag": "greetings",
+     "patterns":  ["hello", "hey", "hi", "what's up?", "how's it going?"],
+     "responses": ["Hello!", "Greetings!", "Hi, good to see you.", "Hi there."]
+    },
+    {"tag": "farewell",
+     "patterns":  ["bye", "see ya", "gotta go", "goodbye", "adios", "gotta run", "see you later", "im out", "have a good day"],
+     "responses": ["See you next time!", "Goodbye!", "Farewell, friend.", "Until next time!", "Bye. Hope to you see you again!"]
+    },
+    {"tag": "name",
+     "patterns":  ["Who are you?", "What is your name?", "Who is this?"],
+     "responses": ["I'm ConvoBot.", "You can call me ConvoBot.", "This is ConvoBot, nice to meet you!"]
+    },
+    {"tag": "options",
+     "patterns":  ["What can you do?", "Tell me something.", "What can you tell me?", "What is your purpose?"],
+     "responses": ["I can tell you the weather today, the price of gas, or the NBA teams playing today."]
+    },
+    {"tag": "weather",
+     "patterns":  ["Weather", "What is the weather today?", "Is it sunny today?", "Is it cold?", "Tell me the temperature."],
+     "responses": ["It is sunny right now at 83 degrees.", "It is cloudy today at 57 degrees with a 40% chance of rainfall.", "It is currently snowing at 13 degrees."]
+    },
+    {"tag": "gas",
+     "patterns":  ["gas prices", "gas", "how much is a gallon of gas?", "What is the price of gas right now?", "fuel", "petrol"],
+     "responses": ["Gas prices are sitting at $4.17 a gallon", "A gallon of gas is currently $3.51", "Gas is at $3.96 a gallon."]
+    },
+    {"tag": "NBA",
+     "patterns":  ["NBA", "teams", "Which teams are playing today?", "Who's playing today?", "Any basketball games on?", "Who's playing basketball today?", "basketball"],
+     "responses": ["Lakers and Celtics are facing off today.", "The Bulls will be playing against the Warriors today.", "Miami Heat will play the Dallas Mavericks today."]
+    }
+]}
