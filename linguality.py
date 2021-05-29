@@ -85,8 +85,10 @@ while True:
             target_language=spokenLanguage
         )
         if output['translatedText'] != output['input']:
-        print("You should reply with:", output['translatedText'])
-        print("Which means:", output['input'])
+            print("You should reply with:", output['translatedText'])
+            print("Which means:", output['input'])
+        else:
+            print("You should reply with:", output['translatedText'])
         generate_reply(output['translatedText'], spokenLanguage)
     except sr.UnknownValueError:
         print("Linguality did not understand what they said")
