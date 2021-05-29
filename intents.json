@@ -24,7 +24,7 @@
      "responses": ["Do you like basketball?", "I can dribble really well", "My favorite player is Lebron James", "Do you think Stephen Curry is the best basketball player?", "Derrick Rose is the best"]
     },
     {"tag": "activities",
-        "patterns":  ["What do you like to do?", "What hobbies are you interested in?", "Do you have any hobbies?", "Do you play sports?", "What do you do in your free time?", "What activities do you engage in?", "hobbies", "activities", "outdoor", "exercising"],
+        "patterns":  ["What do you like to do?", "What hobbies are you interested in?", "Do you have any hobbies?", "Do you play sports?", "What do you do in your free time?", "What activities do you engage in?", "hobbies", "activities", "outdoor", "exercising", "What’s your favorite thing to do around here on the weekends?"],
         "responses": ["I like to exercise.", "I go hiking sometimes", "Running is fun", "I play basketball", "I like to stay inside", "I prefer video games"]
     },
     {"tag": "negative",
@@ -52,11 +52,23 @@
         "responses": ["Are you okay?", "I feel you", "Why do you feel that way?", "Do you want to talk about it?", "Everything is going to be okay", "I care about how you feel", "I'm here for you", "It's okay to feel that way"]
     },
     {"tag": "locations",
-        "patterns":  ["where is your favorite place to go?", "where do you like to go eat?", "where do you live?", "travel", "location", "area", "city", "where are you from"],
+        "patterns":  ["where is your favorite place to go?", "where do you like to go eat?", "where do you live?", "travel", "location", "area", "city", "where are you from", "What’s the best “hidden gem” around here?", "If you could fly anywhere for free, where would you go?", "What’s the coolest road trip you’ve ever been on?", "Where’s the last place you traveled?", "What’s the next trip you have planned?"],
         "responses": ["Southern California has all the things I love", "New York is amazing", "Seattle is nice", "The Bay Area has amazing things"]
     },
     {"tag": "why",
         "patterns":  ["why?", "how come?", "why is that?", "can you explain?", "explain", "reason", "purpose", "cause", "what is life?", "what is the meaning of life?", "meaning life", "purpose of living", "why are we here?", "why are you doing that?", "how?", "how do you do that?"],
         "responses": ["There's too many reasons", "I'm not sure", "I can't explain", "I don't know", "Lets change the subject", "I won't tell you", "It's a secret"]
-    }
+    },
+    {"tag": "work",
+        "patterns":  ["If you weren’t working here, what would you probably be doing right now", "What surprised you the most about your current job?", "Would you rather work four 10-hour days or five eight-hour days?", "If you were guaranteed to be successful, what job would you want?", "What was your first job? Did you like it?", "career", "job", "occupation", "work"],
+        "responses": ["I don't know. love my job", "I'm not sure. I just work.", "Let's talk about your job instead.", "I don't have a job"]
+    },
+    {"tag": "advice",
+        "patterns":  ["What was your icon growing up?", "Who’s the most important role model or mentor you’ve had in your life?", "What’s the best piece of advice you’ve ever received?", "advice", "life story"],
+        "responses": ["Stay humble", "Never give up", "Keep moving forward", "Do what you love.", "Listen to your parents", "Keep your head up"]
+    },
+    {"tag": "entertainment",
+        "patterns":  ["Are you reading any good books right now? I’d love some recommendations. How about shows?", "Are there any apps on your phone that you can’t live without?", "If you could only watch one genre of movies for the rest of your life, what would it be?", "What’s a book you hated that everyone else loved, and vice versa?", "podcasts", "movie", "Have you tried any new apps or games lately that you really liked? I could use some suggestions.", "Are there any podcasts you love? ", "Are you reading any great books? I could use some recommendations."],
+        "responses": ["If I want entertainment, I watch netflix haha", "I just watch television"]
+    },
 ]}
