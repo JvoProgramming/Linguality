@@ -70,5 +70,5 @@
     {"tag": "entertainment",
         "patterns":  ["Are you reading any good books right now? I’d love some recommendations. How about shows?", "Are there any apps on your phone that you can’t live without?", "If you could only watch one genre of movies for the rest of your life, what would it be?", "What’s a book you hated that everyone else loved, and vice versa?", "podcasts", "movie", "Have you tried any new apps or games lately that you really liked? I could use some suggestions.", "Are there any podcasts you love? ", "Are you reading any great books? I could use some recommendations."],
         "responses": ["If I want entertainment, I watch netflix haha", "I just watch television"]
-    },
+    }
 ]}
