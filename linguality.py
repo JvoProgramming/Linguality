@@ -48,6 +48,7 @@ userTurn = True
 while True:
     userTurn = not userTurn
     with sr.Microphone() as source:
+        r.adjust_for_ambient_noise(source)
         if userTurn == True:
             print('Waiting you to finish saying the response...')
             audio = r.listen(source)
