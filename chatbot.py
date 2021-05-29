@@ -50,6 +50,11 @@ def get_response(intents_list, intents_json):
             break
     return result
 
+#IGNORE CODE BELOW
+#removes tensorflow error from mid-execution
+ints = predict_class('ignore this')
+res = get_response(ints, intents)
+
 """
 while True:
     message = input("")
