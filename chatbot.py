@@ -6,7 +6,9 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
 
+import tensorflow as tf
 
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 lemmatizer = WordNetLemmatizer()
 intents = json.loads(open('intents.json').read())

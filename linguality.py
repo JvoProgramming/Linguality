@@ -84,6 +84,7 @@ while True:
             res,
             target_language=spokenLanguage
         )
+        if output['translatedText'] != output['input']:
         print("You should reply with:", output['translatedText'])
         print("Which means:", output['input'])
         generate_reply(output['translatedText'], spokenLanguage)
