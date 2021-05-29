@@ -4,13 +4,17 @@ import os
 import sys
 import string
 import re
-import chatbot
+import json
+from chatbot import predict_class as predict_class
+from chatbot import get_response as get_response
 from google.cloud import translate_v2 as translate
 from google.cloud import texttospeech_v1
 from supportedLanguages import lang
 
 sys.tracebacklimit = 0
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"C:\Users\Zenpa\OneDrive\Documents\Class Assignments\CS173\Final Project\Linguality\credentials.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"C:\Users\Zenpa\OneDrive\Documents\Class Assignments\CS173\Final Project\Linguality\credentials.json" #setting API JSON
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' #prevents tensorflow warnings https://stackoverflow.com/questions/35911252/disable-tensorflow-debugging-information
+intents = json.loads(open('intents.json').read())
 
 #translate API
 translate_client = translate.Client()
@@ -53,7 +57,7 @@ while True:
     with sr.Microphone() as source:
         r.adjust_for_ambient_noise(source)
         if userTurn == True:
-            print('Waiting you to finish saying the response...')
+            print('Waiting for you to finish saying the response...')
             audio = r.listen(source)
             continue
         print('Waiting for their response...')
@@ -68,33 +72,21 @@ while True:
 
         output['translatedText'] = re.sub(r'[^A-Za-z ]+', '', output['translatedText'])
 
-        #print("Google Cloud thinks they said", output)
-
         print("They said ( in", lang[output['detectedSourceLanguage']], ") ->",  output['translatedText'])
         spokenLanguage = output['detectedSourceLanguage']
 
         ##CALCULATE RESPONSE AND ADD IT TO FULL VOICE OUTPUT
-        
-        fullVoiceOutput = "They said " + output['translatedText'] + "... You should reply with: " #INSERT RESPONSE HERE
-
-        #tts API
-        synthesis_input = texttospeech_v1.SynthesisInput(text=fullVoiceOutput)
-        voice = texttospeech_v1.VoiceSelectionParams(
-            language_code='en',
-            ssml_gender=texttospeech_v1.SsmlVoiceGender.MALE
+        ints = predict_class(output['translatedText'])
+        res = get_response(ints, intents)
+        fullVoiceOutput = "They said " + output['translatedText'] + "... You should reply with: "
+        generate_reply(fullVoiceOutput, 'en')
+        output = translate_client.translate(
+            res,
+            target_language=spokenLanguage
         )
-
-        response1 = tts_client.synthesize_speech(
-            input = synthesis_input,
-            voice = voice,
-            audio_config = audio_config
-        )
-
-        with open('reply.mp3', 'wb') as output1:
-            output1.write(response1.audio_content)
-
-        playsound('reply.mp3')
-        os.remove('reply.mp3')
+        print("You should reply with:", output['translatedText'])
+        print("Which means:", output['input'])
+        generate_reply(output['translatedText'], spokenLanguage)
     except sr.UnknownValueError:
         print("Linguality did not understand what they said")
         if spokenLanguage == "":
