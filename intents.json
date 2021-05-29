@@ -48,15 +48,15 @@
         "responses": ["Great!", "Awesome!", "Good choice.", "I like you."]
     },
     {"tag": "therapy",
-        "patterns":  ["I'm sad", "sad", "depression", "depressed", "I'm depressed", "lonely", "afraid", "scared", "i need help", "unhappy", "anxious", "anxiety", "angry", "mad", "upset", "furious", "tired", "exhausted", "overwhelmed", "overwhelming", "pissed", "sorry", "apologize"]
+        "patterns":  ["I'm sad", "sad", "depression", "depressed", "I'm depressed", "lonely", "afraid", "scared", "i need help", "unhappy", "anxious", "anxiety", "angry", "mad", "upset", "furious", "tired", "exhausted", "overwhelmed", "overwhelming", "pissed", "sorry", "apologize"],
         "responses": ["Are you okay?", "I feel you", "Why do you feel that way?", "Do you want to talk about it?", "Everything is going to be okay", "I care about how you feel", "I'm here for you", "It's okay to feel that way"]
     },
     {"tag": "locations",
-        "patterns":  ["where is your favorite place to go?", "where do you like to go eat?", "where do you live?", "travel", "location", "area", "city", "where are you from"]
+        "patterns":  ["where is your favorite place to go?", "where do you like to go eat?", "where do you live?", "travel", "location", "area", "city", "where are you from"],
         "responses": ["Southern California has all the things I love", "New York is amazing", "Seattle is nice", "The Bay Area has amazing things"]
     },
     {"tag": "why",
-        "patterns":  ["why?", "how come?", "why is that?", "can you explain?", "explain", "reason", "purpose", "cause", "what is life?", "what is the meaning of life?", "meaning life", "purpose of living", "why are we here?", "why are you doing that?", "how?", "how do you do that?"]
+        "patterns":  ["why?", "how come?", "why is that?", "can you explain?", "explain", "reason", "purpose", "cause", "what is life?", "what is the meaning of life?", "meaning life", "purpose of living", "why are we here?", "why are you doing that?", "how?", "how do you do that?"],
         "responses": ["There's too many reasons", "I'm not sure", "I can't explain", "I don't know", "Lets change the subject", "I won't tell you", "It's a secret"]
     }
 ]}
