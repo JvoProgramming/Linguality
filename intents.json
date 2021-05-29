@@ -1,6 +1,6 @@
 {"intents": [
     {"tag": "greetings",
-     "patterns":  ["hello", "hey", "hi", "what's up?", "how's it going?", "yo"],
+     "patterns":  ["hello", "hey", "hi", "what's up?", "how's it going?", "yo", "how are you?"],
      "responses": ["Hello!", "Greetings!", "Hi, good to see you.", "Hi there.", "Hey, what's up?", "Hi, how are you?", "Hello friend!"]
     },
     {"tag": "farewell",
@@ -40,11 +40,23 @@
         "responses": ["I like that sport", "Do you play sports?", "What is your favorite sports team?", "I mostly play basketball."]
     },
     {"tag": "badresponses",
-        "patterns":  ["no", "maybe", "nope", "not really", "absolutely not", "i don't know", "not sure"],
+        "patterns":  ["no", "maybe", "nope", "not really", "absolutely not", "i don't know", "not sure", "nah"],
         "responses": ["Okay.", "Fine", "Let me know if you change your mind", "Why not?", "I understand", "I should leave", "Are you sure?"]
     },
     {"tag": "goodresponses",
         "patterns":  ["absolutely", "yes", "definitely", "sure", "i'd love to", "I am down"],
         "responses": ["Great!", "Awesome!", "Good choice.", "I like you."]
+    },
+    {"tag": "therapy",
+        "patterns":  ["I'm sad", "sad", "depression", "depressed", "I'm depressed", "lonely", "afraid", "scared", "i need help", "unhappy", "anxious", "anxiety", "angry", "mad", "upset", "furious", "tired", "exhausted", "overwhelmed", "overwhelming", "pissed", "sorry", "apologize"]
+        "responses": ["Are you okay?", "I feel you", "Why do you feel that way?", "Do you want to talk about it?", "Everything is going to be okay", "I care about how you feel", "I'm here for you", "It's okay to feel that way"]
+    },
+    {"tag": "locations",
+        "patterns":  ["where is your favorite place to go?", "where do you like to go eat?", "where do you live?", "travel", "location", "area", "city", "where are you from"]
+        "responses": ["Southern California has all the things I love", "New York is amazing", "Seattle is nice", "The Bay Area has amazing things"]
+    },
+    {"tag": "why",
+        "patterns":  ["why?", "how come?", "why is that?", "can you explain?", "explain", "reason", "purpose", "cause", "what is life?", "what is the meaning of life?", "meaning life", "purpose of living", "why are we here?", "why are you doing that?", "how?", "how do you do that?"]
+        "responses": ["There's too many reasons", "I'm not sure", "I can't explain", "I don't know", "Lets change the subject", "I won't tell you", "It's a secret"]
     }
 ]}
