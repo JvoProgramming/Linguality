@@ -22,7 +22,8 @@ translate_client = translate.Client()
 #tts API
 tts_client = texttospeech_v1.TextToSpeechClient()
 audio_config = texttospeech_v1.AudioConfig(
-    audio_encoding=texttospeech_v1.AudioEncoding.MP3
+    audio_encoding=texttospeech_v1.AudioEncoding.MP3,
+    speaking_rate=.75
 )
 
 #voice input library and API
@@ -76,8 +77,10 @@ while True:
         spokenLanguage = output['detectedSourceLanguage']
 
         ##CALCULATE RESPONSE AND ADD IT TO FULL VOICE OUTPUT
-        ints = predict_class(output['translatedText'])
+        ints = predict_class(output['translatedText'].lower())
+        print(ints)
         res = get_response(ints, intents)
+        print(res)
         fullVoiceOutput = "They said " + output['translatedText'] + "... You should reply with: "
         generate_reply(fullVoiceOutput, 'en')
         output = translate_client.translate(
@@ -92,13 +95,13 @@ while True:
         generate_reply(output['translatedText'], spokenLanguage)
     except sr.UnknownValueError:
         print("Linguality did not understand what they said")
-        if spokenLanguage == "":
+        if spokenLanguage == "": #NO PRIOR LANGUAGE KNOWN YET
             print("You should reply with: huh?")
             message = "I did not understand them. You should reply with..."
             generate_reply(message, 'en')
             generate_reply('huh', 'en')
 
-        else:
+        else: #GETS PRIOR LANGUAGE
             text = "what?"
             output = translate_client.translate(
             text,
