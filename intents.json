@@ -4,7 +4,7 @@
      "responses": ["Hello!", "Greetings!", "Hi, good to see you.", "Hi there.", "Hey, what's up?", "Hi, how are you?", "Hello friend!"]
     },
     {"tag": "farewell",
-     "patterns":  ["bye", "see ya", "gotta go", "goodbye", "adios", "gotta run", "see you later", "im out", "have a good day", "peace"],
+     "patterns":  ["bye", "see ya", "gotta go", "goodbye", "adios", "gotta run", "see you later", "im out", "have a good day", "peace", "good talk", "i'm leaving"],
      "responses": ["See you next time!", "Goodbye!", "Farewell, friend.", "Until next time!", "Bye. Hope to you see you again!", "Bye, have a good day!", "See you again!", "Goodbye. Have a great day!"]
     },
     {"tag": "name",
@@ -34,7 +34,8 @@
     {"tag": "positive",
         "patterns":  ["admire", "approve", "amazing", "agree", "awesome", "brave", "beautiful", "like", "brilliant", "cute", "cool", "creative", "elegant", "energetic", "exciting", "excellent", "fabulous", "fantastic", "fun", "favorable", "funny", "friendly", "genuine", "good", "gorgeous", "great", "intelligent", "innovative", "impressive", "lovely", "nice", "positive", "pleasant", "perfect", "good quality", "special", "super", "supporting", "terrific", "trusting", "trustworthy"],
         "responses": ["You are too.", "Just like you", "I agree!", "You have those qualities too.", "Sounds like you"]
-    },
+    }
+,
     {"tag": "sports",
         "patterns":  ["baseball", "soccer", "football", "tennis", "volleyball", "hockey", "sports"],
         "responses": ["I like that sport", "Do you play sports?", "What is your favorite sports team?", "I mostly play basketball."]
@@ -48,12 +49,8 @@
         "responses": ["Great!", "Awesome!", "Good choice.", "I like you."]
     },
     {"tag": "therapy",
-        "patterns":  ["I'm sad", "sad", "depression", "depressed", "I'm depressed", "lonely", "afraid", "scared", "i need help", "unhappy", "anxious", "anxiety", "angry", "mad", "upset", "furious", "tired", "exhausted", "overwhelmed", "overwhelming", "pissed", "sorry", "apologize"],
+        "patterns":  ["I'm sad", "sad", "depression", "depressed", "I'm depressed", "lonely", "afraid", "scared", "i need help", "unhappy", "anxious", "anxiety", "angry", "mad", "upset", "furious", "tired", "exhausted", "overwhelmed", "overwhelming", "pissed", "sorry", "apologize", "i don't feel good", "my feelings are hurt", "i am heartbroken", "i am hurt", "it hurts", "cuts deep"],
         "responses": ["Are you okay?", "I feel you", "Why do you feel that way?", "Do you want to talk about it?", "Everything is going to be okay", "I care about how you feel", "I'm here for you", "It's okay to feel that way"]
-    },
-    {"tag": "locations",
-        "patterns":  ["where is your favorite place to go?", "where do you like to go eat?", "where do you live?", "travel", "location", "area", "city", "where are you from", "What’s the best “hidden gem” around here?", "If you could fly anywhere for free, where would you go?", "What’s the coolest road trip you’ve ever been on?", "Where’s the last place you traveled?", "What’s the next trip you have planned?"],
-        "responses": ["Southern California has all the things I love", "New York is amazing", "Seattle is nice", "The Bay Area has amazing things"]
     },
     {"tag": "why",
         "patterns":  ["why?", "how come?", "why is that?", "can you explain?", "explain", "reason", "purpose", "cause", "what is life?", "what is the meaning of life?", "meaning life", "purpose of living", "why are we here?", "why are you doing that?", "how?", "how do you do that?"],
@@ -68,7 +65,15 @@
         "responses": ["Stay humble", "Never give up", "Keep moving forward", "Do what you love.", "Listen to your parents", "Keep your head up"]
     },
     {"tag": "entertainment",
-        "patterns":  ["Are you reading any good books right now? I’d love some recommendations. How about shows?", "Are there any apps on your phone that you can’t live without?", "If you could only watch one genre of movies for the rest of your life, what would it be?", "What’s a book you hated that everyone else loved, and vice versa?", "podcasts", "movie", "Have you tried any new apps or games lately that you really liked? I could use some suggestions.", "Are there any podcasts you love? ", "Are you reading any great books? I could use some recommendations."],
+        "patterns":  ["Are you reading any good books right now? I’d love some recommendations. How about shows?", "Are there any apps on your phone that you can’t live without?", "If you could only watch one genre of movies for the rest of your life, what would it be?", "What’s a book you hated that everyone else loved, and vice versa?", "podcasts", "movie", "Have you tried any new apps or games lately that you really liked? I could use some suggestions.", "Are there any podcasts you love? ", "Are you reading any great books? I could use some recommendations.", "Do you like to read?"],
         "responses": ["If I want entertainment, I watch netflix haha", "I just watch television"]
+    },
+    {"tag": "locations",
+        "patterns":  ["where is your favorite place to go", "where do you like to go eat", "where do you live", "travel", "location", "area", "city", "where are you from", "What’s the best hidden gem around here?", "If you could fly anywhere for free, where would you go", "What’s the coolest road trip you’ve ever been on", "Where’s the last place you traveled", "What’s the next trip you have planned"],
+        "responses": ["Southern California has all the things I love", "New York is amazing", "Seattle is nice", "The Bay Area has amazing things"]
+    },
+    {"tag": "acknowledgement",
+        "patterns":  ["okay", "ok"],
+        "responses": ["Okay", "Sure", "What else do you want to talk about?", "I will be leaving soon", "Let me know what else you want to talk about"]
     }
 ]}

@@ -78,9 +78,7 @@ while True:
 
         ##CALCULATE RESPONSE AND ADD IT TO FULL VOICE OUTPUT
         ints = predict_class(output['translatedText'].lower())
-        print(ints)
         res = get_response(ints, intents)
-        print(res)
         fullVoiceOutput = "They said " + output['translatedText'] + "... You should reply with: "
         generate_reply(fullVoiceOutput, 'en')
         output = translate_client.translate(

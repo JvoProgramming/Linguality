@@ -3,3 +3,6 @@ credentials.json
 __pycache__/
 .vscode/
 *.mp3
+classes.pkl
+chatbotmodel.h5
+words.pkl
