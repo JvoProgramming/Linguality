@@ -6,9 +6,18 @@ More information about the application found here: https://docs.google.com/docum
 
 Be sure to install all required modules before running!
 
-Also, make sure to replace the .json directory in linguality.py with your own google API's .json file
+Create a file in the root directory called ```credentials.json``` in the root directory.
+This file will need to contain your Google Cloud Platform API key object.
 
 If there is a problem with the client authorization, try running:
 pip install oauth2client
 
 Before running linguality.py, please run training.py
+
+If there you need more help running this application, please contact me at jvoprogramming@gmail.com
+
+_________________________________________________________________________________________________
+
+Screenshots:
+![](images/image1.png)
+![](images/image2.png)
