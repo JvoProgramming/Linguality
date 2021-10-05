@@ -14,7 +14,7 @@ pip install oauth2client
 
 Before running linguality.py, please run training.py
 
-If there you need more help running this application, please contact me at jvoprogramming@gmail.com
+If you need more help running this application, please contact me at jvoprogramming@gmail.com
 
 _________________________________________________________________________________________________
 
