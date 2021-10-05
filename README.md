@@ -19,5 +19,5 @@ If you need more help running this application, please contact me at jvoprogramm
 _________________________________________________________________________________________________
 
 Screenshots:
-![](images/image1.png)
-![](images/image2.png)
+<img src="images/image1.png" width="300px">
+<img src="images/image2.png" width="300px">
