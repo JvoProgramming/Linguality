@@ -12,7 +12,7 @@ from google.cloud import texttospeech_v1
 from supportedLanguages import lang
 
 sys.tracebacklimit = 0
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"C:\Users\Zenpa\OneDrive\Documents\Class Assignments\CS173\Final Project\Linguality\credentials.json" #setting API JSON
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "credentials.json" #setting API JSON
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' #prevents tensorflow warnings https://stackoverflow.com/questions/35911252/disable-tensorflow-debugging-information
 intents = json.loads(open('intents.json').read())
 
